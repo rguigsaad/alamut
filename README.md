@@ -9,7 +9,7 @@ java -jar start.jar OPTIONS=All
 ```
   - Change in pom.xml the : jetty.webapp.directory
   - Run command : 
- ```sh
+```sh
 mvn clean install
 ```
   - Go check http://localhost:8080/alamut/rest/user
