@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <jetty.webapp.directory>/Users/rguigsaad/Downloads/jetty-distribution-9.2.2.v20140723/webapps</jetty.webapp.directory>
+        <jetty.webapp.directory>/Users/julienperruche/app/jetty-distribution-9.2.2.v20140723/webapps</jetty.webapp.directory>
     </properties>
 
     <repositories>
