@@ -10,18 +10,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/getuser")
+@Path("/user")
 public class UserService {
 	
     @GET
+    @Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
     public User getUserInJSON() {
         User user = new User("melodie gence","0123234","15 rue de chambery");
         return user;
     }
-    /*
+
     @POST
-	@Path("/postuser")
+	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createUserInJSON(User user) {
  
@@ -29,5 +30,4 @@ public class UserService {
 		return Response.status(Response.Status.CREATED).entity(result).build();
  
 	}
-	*/
 }
