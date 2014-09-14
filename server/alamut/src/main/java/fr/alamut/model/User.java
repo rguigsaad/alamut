@@ -12,7 +12,10 @@ public class User {
         this.emailAddress = emailAddress;
     }
 
-    public String getUserName() {
+    public User() {
+	}
+
+	public String getUserName() {
         return userName;
     }
 
