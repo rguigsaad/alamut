@@ -13,6 +13,7 @@
 		<jersey.version>1.7</jersey.version>
 		<guice.verion>3.0</guice.verion>
 		<h2.version>1.4.181</h2.version>
+		<common.version>1.2</common.version>
 	</properties>
 
 	<dependencies>
@@ -46,6 +47,12 @@
 			<artifactId>h2</artifactId>
 			<version>${h2.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${common.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<repositories>

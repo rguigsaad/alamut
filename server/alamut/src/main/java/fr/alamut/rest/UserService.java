@@ -1,11 +1,13 @@
 package fr.alamut.rest;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -24,7 +26,15 @@ public class UserService {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public User get(@QueryParam("emailAdress") String emailAdress) {
+	public List<User> get() {
+		List<User> listUser = userControler.getAllUsers();
+		return listUser;
+	}
+	
+	@GET
+	@Path("/{emailAdress}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public User get(@PathParam("emailAdress") String emailAdress) {
 		User user = userControler.getUserByEmailAdress(emailAdress);
 		return user;
 	}
