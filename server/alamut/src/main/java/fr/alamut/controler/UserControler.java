@@ -1,5 +1,6 @@
 package fr.alamut.controler;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -15,15 +16,15 @@ public class UserControler {
 	public UserControler(UserDao userDao) {
 		this.userDao = userDao;
 	}
-	public List<User> getAllUsers(){
+	public List<User> getAllUsers() throws SQLException{
 		return userDao.getAllUsers();
 	}
 	
-	public void createUser(User user){
+	public void createUser(User user) throws SQLException{
 		userDao.insertUser(user);
 	}
 	
-	public User getUserByEmailAdress(String emailAdress){
+	public User getUserByEmailAdress(String emailAdress) throws SQLException{
 		return userDao.getUserByEmailAddress(emailAdress);
 	}
 }

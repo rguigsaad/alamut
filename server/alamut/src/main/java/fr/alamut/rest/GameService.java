@@ -13,7 +13,6 @@ import fr.alamut.model.Game;
 @Path("/game")
 public class GameService {
 
-	
 	@GET
 	@Path("/get")
     @Produces(MediaType.APPLICATION_JSON)
@@ -27,7 +26,6 @@ public class GameService {
 	@Path("/post")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response createGameInJSON(Game game) {
- 
 		String result = "Game saved : " + game;
 		return Response.status(Response.Status.CREATED).entity(result).build();
  
