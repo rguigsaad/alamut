@@ -1,15 +1,10 @@
 alamut
 =========
 
-Dillinger is a cloud-enabled HTML5 Markdown editor.
-
-  - Install jetty standalone app and start jetty. 
+  - Run H2 db, (create a database 'alamut') and execute script of table creation .
 ```sh
-java -jar start.jar OPTIONS=All
+java -jar h2*.jar
 ```
-  - Change in pom.xml the : jetty.webapp.directory
-  - Run command : 
-```sh
-mvn clean install
-```
-  - Go check http://localhost:8080/alamut/rest/user
+  Get :
+  http://localhost:8080/user?emailAdress=<email adress you look for>
+  Post:  should send a json like  : {"userName":"srguig","emailAddress":"email@gmail.com","phoneNumber":"0123234"}
