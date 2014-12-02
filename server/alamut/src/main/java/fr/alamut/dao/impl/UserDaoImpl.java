@@ -30,7 +30,9 @@ public class UserDaoImpl implements UserDao{
 	public List<User> getAllUsers() throws SQLException {
 		logger.log(Level.INFO,"==> getAllUsers");
 		List<User> listUser = new ArrayList<User>();
-		try (Connection conn = datasource.getConnection()){
+		Connection conn = null;
+		try{
+			conn = datasource.getConnection();
 			String selectSQL = "SELECT USER_NAME, EMAIL_ADDRESS, PHONE_NUMBER FROM USER";
 			PreparedStatement prepStmt = conn.prepareStatement(selectSQL);
 			ResultSet rs = prepStmt.executeQuery();
@@ -39,6 +41,10 @@ public class UserDaoImpl implements UserDao{
 				String emailAddress = rs.getString(2);
 				String phoneNumber = rs.getString(3);
 				listUser.add(new User(userName, phoneNumber, emailAddress)); 
+			}
+		} finally {
+			if (conn != null){
+				conn.close();
 			}
 		}
 		logger.log(Level.INFO,"<== getAllUsers");
@@ -49,7 +55,9 @@ public class UserDaoImpl implements UserDao{
 		logger.log(Level.INFO,"==> getUserByEmailAddress, email address : {} ",emailAddress);
 		// Retrieve a user by email address
 		// update user
-		try (Connection conn = datasource.getConnection()){
+		Connection conn = null;
+		try{
+			conn = datasource.getConnection();
 			String selectSQL = "SELECT USER_NAME, PHONE_NUMBER FROM USER WHERE EMAIL_ADDRESS=?";
 			PreparedStatement prepStmt = conn.prepareStatement(selectSQL);
 			prepStmt.setString(1, emailAddress);
@@ -61,6 +69,10 @@ public class UserDaoImpl implements UserDao{
 				logger.log(Level.INFO,"<== getUserByEmailAddress, user : {} ",user.toString());
 				return user;
 			}
+		}finally {
+			if (conn != null){
+				conn.close();
+			}
 		}
 		logger.log(Level.INFO,"<== getUserByEmailAddress, return null. ");
 		return null;
@@ -70,12 +82,18 @@ public class UserDaoImpl implements UserDao{
 		logger.log(Level.INFO,"==> insertUser, user : {} ",user.toString());
 
 		// update user
-		try (Connection conn = datasource.getConnection()){
+		Connection conn = null;
+		try{
+			conn = datasource.getConnection();
 			PreparedStatement prepStmt = conn.prepareStatement("INSERT INTO USER (USER_NAME, EMAIL_ADDRESS, PHONE_NUMBER) VALUES (?,?,?)");
 			prepStmt.setString(1, user.getUserName());
 			prepStmt.setString(2, user.getEmailAddress());
 			prepStmt.setString(3, user.getPhoneNumber());
 			prepStmt.execute();
+		}finally {
+			if (conn != null){
+				conn.close();
+			}
 		}
 		logger.log(Level.INFO,"<== insertUser");
 	}

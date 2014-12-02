@@ -21,9 +21,13 @@ import com.google.inject.servlet.GuiceServletContextListener;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
+import fr.alamut.controler.GameControler;
 import fr.alamut.controler.UserControler;
+import fr.alamut.dao.GameDao;
 import fr.alamut.dao.UserDao;
+import fr.alamut.dao.impl.GameDaoImpl;
 import fr.alamut.dao.impl.UserDaoImpl;
+import fr.alamut.rest.GameService;
 import fr.alamut.rest.UserService;
 
 public class AlamutGuiceServletConfig extends GuiceServletContextListener {
@@ -50,9 +54,13 @@ public class AlamutGuiceServletConfig extends GuiceServletContextListener {
 				bind(UserDaoImpl.class).in(Singleton.class);
 				bind(UserDao.class).to(UserDaoImpl.class);
 				bind(UserControler.class);
+				bind(GameDaoImpl.class).in(Singleton.class);
+				bind(GameDao.class).to(GameDaoImpl.class);
+				bind(GameControler.class);
 				// Must configure at least one JAX-RS resource or the
 				// server will fail to start.
 				bind(UserService.class);
+				bind(GameService.class);
 
 				// Route all requests through GuiceContainer
 				serve("/*").with(GuiceContainer.class,params);
