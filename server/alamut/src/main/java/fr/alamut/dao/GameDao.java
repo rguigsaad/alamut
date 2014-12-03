@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 import fr.alamut.model.Game;
-import fr.alamut.model.User;
 
 
 /**

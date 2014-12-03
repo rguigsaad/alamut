@@ -5,7 +5,7 @@ package constants;
  * @author julienperr
  *
  */
-public class Constants {
+public interface Constants {
 	
 	// ressources
 	//final static public String RESOURCE 		= "http://78.234.69.110:2556/";

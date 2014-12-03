@@ -14,9 +14,7 @@ import javax.sql.DataSource;
 import com.google.inject.Inject;
 
 import fr.alamut.dao.GameDao;
-import fr.alamut.dao.UserDao;
 import fr.alamut.model.Game;
-import fr.alamut.model.User;
 
 public class GameDaoImpl implements GameDao{
 
